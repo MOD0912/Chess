@@ -9,6 +9,9 @@ This project is a simple implementation of a chess game using Python and the Urs
 - **assets/textures**: Directory containing image files for the chess pieces, including textures for both black and white pieces.
 - **TODO.md**: A file for tracking tasks and features that need to be implemented or improved in the project.
 - **.gitignore**: Specifies files and directories that should be ignored by Git, such as temporary files and compiled files.
+- **README.md**: This file, providing an overview of the project, how to run it, and controls.
+- **LICENSE**: The license file for the project, specifying the terms under which the code can be used and modified.
+- **requirements.txt**: Lists the dependencies required to run the project. At this time, the only required dependency is the Ursina game engine.
 
 ## How to Run the Game
 

@@ -1,10 +1,11 @@
 import ursina as ur
 
 class Pawn(ur.Button):
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, game=None, **kwargs):
         super().__init__(*args, **kwargs)
-        # Additional Pawn-specific initialization can go here
+        self.game = game  # Save reference to the main game
 
     def on_click(self):
         print(f"Pawn clicked at {self.position}")
-        # Pawn-specific click logic
+        if self.game:
+            self.game.piece_clicked(self)

@@ -53,7 +53,8 @@ class Main:
                         texture=self.enemy_color+"-pawn",
                         position=(i/10+0.01, 0.6, 0), 
                         color=ur.color.white,
-                        scale=(.1, .1)
+                        scale=(.1, .1),
+                        game=self
             )
 
             self.pieces[-2].append(pawn)
@@ -63,55 +64,55 @@ class Main:
                   texture=self.enemy_color+"-rook", 
                   position=(0, 0.7, 0), 
                   color=ur.color.white,
-                  scale=(.1, .1)
-                  )
+                  scale=(.1, .1),
+                  game=self)
         rr = Rook(parent=self.board,
                   texture=self.enemy_color+"-rook", 
                   position=(0.7, 0.7, 0), 
                   color=ur.color.white,
-                  scale=(.1, .1)
-                  )
+                  scale=(.1, .1),
+                  game=self)
         
         # knights:
         lk = Knight(parent=self.board, 
                     texture=self.enemy_color+"-knight", 
                     position=(0.1, 0.7, 0), 
                     color=ur.color.white,
-                    scale=(.1, .1)
-                   )
+                    scale=(.1, .1),
+                    game=self)
         rk = Knight(parent=self.board,
                    texture=self.enemy_color+"-knight", 
                    position=(0.6, 0.7, 0), 
                    color=ur.color.white,
-                   scale=(.1, .1)
-                    )
+                   scale=(.1, .1),
+                   game=self)
         
         # bishops:
         lb = Bishop(parent=self.board,
                     texture=self.enemy_color+"-bishop", 
                     position=(0.2, 0.7, 0), 
                     color=ur.color.white,
-                    scale=(.1, .1)
-                    )
+                    scale=(.1, .1),
+                    game=self)
         rb = Bishop(parent=self.board,
                     texture=self.enemy_color+"-bishop", 
                     position=(0.5, 0.7, 0), 
                     color=ur.color.white,
-                    scale=(.1, .1)
-                    )
+                    scale=(.1, .1),
+                    game=self)
         # queen and king:
         queen = Queen(parent=self.board, 
                      texture=self.enemy_color+"-queen", 
                      position=(0.3, 0.7, 0), 
                      color=ur.color.white,
-                     scale=(.1, .1)
-                      )
+                     scale=(.1, .1),
+                     game=self)
         king = King(parent=self.board,
                    texture=self.enemy_color+"-king", 
                    position=(0.4, 0.7, 0), 
                    color=ur.color.white,
-                   scale=(.1, .1)
-                   )
+                   scale=(.1, .1),
+                   game=self)
         self.pieces[-1].extend([lr, lk, lb, queen, king, rb, rk, rr])
         
         
@@ -123,7 +124,8 @@ class Main:
                         texture=self.your_color+"-pawn", 
                         position=(i/10, 0.1, 0),
                         color=ur.color.white,
-                        scale=(.1, .1))
+                        scale=(.1, .1),
+                        game=self)
             self.pieces[1].append(pawn)
         
         # rooks:
@@ -131,48 +133,56 @@ class Main:
                   texture=self.your_color+"-rook", 
                   position=(0, 0, 0), 
                   color=ur.color.white,
-                  scale=(.1, .1))
+                  scale=(.1, .1),
+                  game=self)
         rr = Rook(parent=self.board, 
                   texture=self.your_color+"-rook", 
                   position=(0.7, 0, 0), 
                   color=ur.color.white,
-                  scale=(.1, .1))
+                  scale=(.1, .1),
+                  game=self)
 
         # knights:
         lk = Knight(parent=self.board, 
                     texture=self.your_color+"-knight", 
                     position=(0.1, 0, 0), 
                     color=ur.color.white,
-                    scale=(.1, .1))
+                    scale=(.1, .1),
+                    game=self)
         rk = Knight(parent=self.board,
                    texture=self.your_color+"-knight", 
                    position=(0.6, 0, 0), 
                    color=ur.color.white,
-                   scale=(.1, .1))
+                   scale=(.1, .1),
+                   game=self)
         
         # bishops:
         lb = Bishop(parent=self.board, 
                     texture=self.your_color+"-bishop", 
                     position=(0.2, 0, 0), 
                     color=ur.color.white,
-                    scale=(.1, .1))
+                    scale=(.1, .1),
+                    game=self)
         rb = Bishop(parent=self.board,
                     texture=self.your_color+"-bishop", 
                     position=(0.5, 0, 0), 
                     color=ur.color.white,
-                    scale=(.1, .1))
+                    scale=(.1, .1),
+                    game=self)
         
         # queen and king:
         queen = Queen(parent=self.board, 
                      texture=self.your_color+"-queen", 
                      position=(0.3, 0, 0), 
                      color=ur.color.white,
-                     scale=(.1, .1))
+                     scale=(.1, .1),
+                     game=self)
         king = King(parent=self.board, 
                    texture=self.your_color+"-king", 
                    position=(0.4, 0, 0), 
                    color=ur.color.white,
-                   scale=(.1, .1))
+                   scale=(.1, .1),
+                   game=self)
 
         self.pieces[0].extend([lr, lk, lb, queen, king, rb, rk, rr])
         
@@ -180,6 +190,10 @@ class Main:
         for i in self.pieces:
             #print(i)
             print(len(i))
+            
+    def piece_clicked(self, piece):
+        print(f"{piece} was clicked!")
+        # Here you can handle selection, movement, etc.
 
 def input(key):
     if key == "control":

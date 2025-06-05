@@ -1,10 +1,11 @@
 import ursina as ur
 
 class Rook(ur.Button):
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, game=None, **kwargs):
         super().__init__(*args, **kwargs)
-        # Additional Rook-specific initialization can go here
+        self.game = game
 
     def on_click(self):
         print(f"Rook clicked at {self.position}")
-        # Rook-specific click logic
+        if self.game:
+            self.game.piece_clicked(self)

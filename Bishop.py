@@ -1,10 +1,11 @@
 import ursina as ur
 
 class Bishop(ur.Button):
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, game=None, **kwargs):
         super().__init__(*args, **kwargs)
-        # Additional Bishop-specific initialization can go here
+        self.game = game
 
     def on_click(self):
         print(f"Bishop clicked at {self.position}")
-        # Bishop-specific click logic
+        if self.game:
+            self.game.piece_clicked(self)

@@ -1,7 +1,12 @@
 import ursina as ur
 import os
 
-from piece import Piece
+from Pawn import Pawn
+from Rook import Rook
+from Knight import Knight
+from Bishop import Bishop
+from Queen import Queen
+from King import King
 
 class Main:
     def __init__(self):
@@ -44,69 +49,69 @@ class Main:
         # top pieces
         # pawns:
         for i in range(0, 8):
-            pawn = Piece(parent=self.board, 
-                          texture=self.enemy_color+"-pawn",
-                          position=(i/10+0.01, 0.6, 0), 
-                          color=ur.color.white,
-                          scale=(.1, .1)
+            pawn = Pawn(parent=self.board, 
+                        texture=self.enemy_color+"-pawn",
+                        position=(i/10+0.01, 0.6, 0), 
+                        color=ur.color.white,
+                        scale=(.1, .1)
             )
 
             self.pieces[-2].append(pawn)
             
         # rooks:
-        lr = Piece(parent=self.board, 
-                   texture=self.enemy_color+"-rook", 
-                   position=(0.01, 0.7, 0), 
-                   color=ur.color.white,
-                   scale=(.1, .1)
-                   )
-        rr = Piece(parent=self.board,
-                    texture=self.enemy_color+"-rook", 
-                    position=(0.71, 0.7, 0), 
-                    color=ur.color.white,
-                    scale=(.1, .1)
-                    )
+        lr = Rook(parent=self.board, 
+                  texture=self.enemy_color+"-rook", 
+                  position=(0, 0.7, 0), 
+                  color=ur.color.white,
+                  scale=(.1, .1)
+                  )
+        rr = Rook(parent=self.board,
+                  texture=self.enemy_color+"-rook", 
+                  position=(0.7, 0.7, 0), 
+                  color=ur.color.white,
+                  scale=(.1, .1)
+                  )
         
         # knights:
-        lk = Piece(parent=self.board, 
-                   texture=self.enemy_color+"-knight", 
-                   position=(0.11, 0.7, 0), 
-                   color=ur.color.white,
-                   scale=(.1, .1)
-                   )
-        rk = Piece(parent=self.board,
+        lk = Knight(parent=self.board, 
                     texture=self.enemy_color+"-knight", 
-                    position=(0.61, 0.7, 0), 
+                    position=(0.1, 0.7, 0), 
                     color=ur.color.white,
                     scale=(.1, .1)
+                   )
+        rk = Knight(parent=self.board,
+                   texture=self.enemy_color+"-knight", 
+                   position=(0.6, 0.7, 0), 
+                   color=ur.color.white,
+                   scale=(.1, .1)
                     )
         
         # bishops:
-        lb = Piece(parent=self.board,
+        lb = Bishop(parent=self.board,
                     texture=self.enemy_color+"-bishop", 
-                    position=(0.21, 0.7, 0), 
+                    position=(0.2, 0.7, 0), 
                     color=ur.color.white,
                     scale=(.1, .1)
                     )
-        rb = Piece(parent=self.board,
+        rb = Bishop(parent=self.board,
                     texture=self.enemy_color+"-bishop", 
-                    position=(0.51, 0.7, 0), 
+                    position=(0.5, 0.7, 0), 
                     color=ur.color.white,
                     scale=(.1, .1)
                     )
         # queen and king:
-        queen = Piece(parent=self.board, 
-                      texture=self.enemy_color+"-queen", 
-                      position=(0.31, 0.7, 0), 
-                      color=ur.color.white,
-                      scale=(.1, .1)
+        queen = Queen(parent=self.board, 
+                     texture=self.enemy_color+"-queen", 
+                     position=(0.3, 0.7, 0), 
+                     color=ur.color.white,
+                     scale=(.1, .1)
                       )
-        king = Piece(parent=self.board,
-                        texture=self.enemy_color+"-king", 
-                        position=(0.41, 0.7, 0), 
-                        color=ur.color.white,
-                        scale=(.1, .1)
-                        )
+        king = King(parent=self.board,
+                   texture=self.enemy_color+"-king", 
+                   position=(0.4, 0.7, 0), 
+                   color=ur.color.white,
+                   scale=(.1, .1)
+                   )
         self.pieces[-1].extend([lr, lk, lb, queen, king, rb, rk, rr])
         
         
@@ -114,60 +119,60 @@ class Main:
         # bottom pieces
         # pawns:
         for i in range(0, 8):
-            pawn = Piece(parent=self.board, 
-                          texture=self.your_color+"-pawn", 
-                          position=(i/10+0.01, 0.1, 0),
-                          color=ur.color.white,
-                          scale=(.1, .1))
+            pawn = Pawn(parent=self.board, 
+                        texture=self.your_color+"-pawn", 
+                        position=(i/10, 0.1, 0),
+                        color=ur.color.white,
+                        scale=(.1, .1))
             self.pieces[1].append(pawn)
         
         # rooks:
-        lr = Piece(parent=self.board, 
-                   texture=self.your_color+"-rook", 
-                   position=(0.01, 0, 0), 
-                   color=ur.color.white,
-                   scale=(.1, .1))
-        rr = Piece(parent=self.board, 
-                   texture=self.your_color+"-rook", 
-                   position=(0.71, 0, 0), 
-                   color=ur.color.white,
-                   scale=(.1, .1))
+        lr = Rook(parent=self.board, 
+                  texture=self.your_color+"-rook", 
+                  position=(0, 0, 0), 
+                  color=ur.color.white,
+                  scale=(.1, .1))
+        rr = Rook(parent=self.board, 
+                  texture=self.your_color+"-rook", 
+                  position=(0.7, 0, 0), 
+                  color=ur.color.white,
+                  scale=(.1, .1))
 
         # knights:
-        lk = Piece(parent=self.board, 
-                   texture=self.your_color+"-knight", 
-                   position=(0.11, 0, 0), 
-                   color=ur.color.white,
-                   scale=(.1, .1))
-        rk = Piece(parent=self.board,
+        lk = Knight(parent=self.board, 
                     texture=self.your_color+"-knight", 
-                    position=(0.61, 0, 0), 
+                    position=(0.1, 0, 0), 
                     color=ur.color.white,
                     scale=(.1, .1))
-        
-        # bishops:
-        lb = Piece(parent=self.board, 
-                   texture=self.your_color+"-bishop", 
-                   position=(0.21, 0, 0), 
+        rk = Knight(parent=self.board,
+                   texture=self.your_color+"-knight", 
+                   position=(0.6, 0, 0), 
                    color=ur.color.white,
                    scale=(.1, .1))
-        rb = Piece(parent=self.board,
+        
+        # bishops:
+        lb = Bishop(parent=self.board, 
                     texture=self.your_color+"-bishop", 
-                    position=(0.51, 0, 0), 
+                    position=(0.2, 0, 0), 
+                    color=ur.color.white,
+                    scale=(.1, .1))
+        rb = Bishop(parent=self.board,
+                    texture=self.your_color+"-bishop", 
+                    position=(0.5, 0, 0), 
                     color=ur.color.white,
                     scale=(.1, .1))
         
         # queen and king:
-        queen = Piece(parent=self.board, 
-                      texture=self.your_color+"-queen", 
-                      position=(0.31, 0, 0), 
-                      color=ur.color.white,
-                      scale=(.1, .1))
-        king = Piece(parent=self.board, 
-                        texture=self.your_color+"-king", 
-                        position=(0.41, 0, 0), 
-                        color=ur.color.white,
-                        scale=(.1, .1))
+        queen = Queen(parent=self.board, 
+                     texture=self.your_color+"-queen", 
+                     position=(0.3, 0, 0), 
+                     color=ur.color.white,
+                     scale=(.1, .1))
+        king = King(parent=self.board, 
+                   texture=self.your_color+"-king", 
+                   position=(0.4, 0, 0), 
+                   color=ur.color.white,
+                   scale=(.1, .1))
 
         self.pieces[0].extend([lr, lk, lb, queen, king, rb, rk, rr])
         

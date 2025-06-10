@@ -16,7 +16,7 @@ class Main:
             self.pieces.append([])
         self.scale_y = 0.75
         self.scale_x = 0.75
-        self.your_color = "black"
+        self.your_color = "white"
         self.enemy_color = "white" if self.your_color == "black" else "black"
         print(self.pieces)
         self.board = ur.Entity(
@@ -29,6 +29,14 @@ class Main:
         self.create_pieces()
     
     def create_board(self):
+        self.boarder = ur.Entity(
+            parent=self.board,
+            model="quad",
+            position=(.35, .35, -0.2),
+            scale=(.9, .9),
+            color=ur.color.rgba32(120, 67, 33).tint(-.05)
+        )
+        # rgba32 very dark brown:  
         for x in range(0, 8):
             for y in range(0, 8):
                 if (x + y) % 2 == 0:
@@ -223,43 +231,8 @@ class Main:
     def clear_points(self):
         for i in self.points:
             ur.destroy(i)
-
-    def pawn(self, piece):
-        self.clear_points()
-        print(f"{piece} was clicked!")
-        print(piece.pos)
-        self.summon_point(piece.pos)
+        self.points = []
         
-    
-    def rook(self, piece):
-        self.clear_points()
-        print(f"{piece} was clicked!")
-        print(piece.pos)
-    
-    def knight(self, piece):
-        self.clear_points()
-        print(f"{piece} was clicked!")
-        print(piece.pos)
-    
-    def bishop(self, piece):
-        self.clear_points()
-        print(f"{piece} was clicked!")
-        print(piece.pos)
-    
-    def queen(self, piece):
-        self.clear_points()
-        print(f"{piece} was clicked!")
-        print(piece.pos)
-    
-    def king(self, piece):
-        self.clear_points()
-        print(f"{piece} was clicked!")
-        print(piece.pos)
-    
-    
-
-
-
 def input(key):
     if key == "control":
         exit()

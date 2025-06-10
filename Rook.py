@@ -11,3 +11,6 @@ class Rook(ur.Button):
         print(f"Rook clicked at {self.position}")
         if self.game:
             self.game.rook(self)
+
+if __name__ == "__main__":
+    import main

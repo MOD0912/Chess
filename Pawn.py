@@ -12,11 +12,13 @@ class Pawn(ur.Button):
         if self.game:
             self.game.clear_points()
         
-        self.game.pawn(self)
+        self.game.summon_point()
 
     def move(self, new_position):
         """Move the pawn to a new position."""
         print(f"Moving pawn from {self.position} to {new_position}")
         self.position = new_position
     
-        # Additional logic for moving the pawn can be added here
+
+if __name__ == "__main__":
+    import main

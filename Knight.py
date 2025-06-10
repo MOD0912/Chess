@@ -11,3 +11,7 @@ class Knight(ur.Button):
         print(f"Knight clicked at {self.position}")
         if self.game:
             self.game.knight(self)
+            
+
+if __name__ == "__main__":
+    import main

@@ -11,3 +11,6 @@ class Bishop(ur.Button):
         print(f"Bishop clicked at {self.position}")
         if self.game:
             self.game.bishop(self)
+            
+if __name__ == "__main__":
+    import main

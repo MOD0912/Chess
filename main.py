@@ -16,7 +16,7 @@ class Main:
             self.pieces.append([])
         self.scale_y = 0.75
         self.scale_x = 0.75
-        self.your_color = "white"
+        self.your_color = "black"
         self.enemy_color = "white" if self.your_color == "black" else "black"
         print(self.pieces)
         self.board = ur.Entity(
@@ -53,7 +53,6 @@ class Main:
                 #self.pieces[0].append(board)
 
     def create_pieces(self):
-
         # top pieces
         # pawns:
         for i in range(0, 8):
@@ -220,29 +219,39 @@ class Main:
         print(pos)
         pos  = (pos[0], pos[1]+.1, 0)
         print(f"Summon point at {pos}")
-        self.point = ur.Button(
+        point = ur.Button(
             parent=self.board,
             model="circle",
             position=pos,
             scale=.0625,
             color=ur.color.red,
-            on_click=self.move_piece,
         )
+        point.on_click=lambda x=point: self.move_piece(x)
+
         self.piece = piece
-        self.points.append(self.point)
+        self.points.append(point)
         
     def clear_points(self):
         for i in self.points:
             ur.destroy(i)
         self.points = []
     
-    def move_piece(self):
-        self.piece.position = self.point.position
+    def move_piece(self, point):
+        self.piece.position = point.position
         self.clear_points()
+        
+    def on_hover(self):
+        print("Hovering over the board")
         
 def input(key):
     if key == "control":
         exit()
+
+def update():
+    if ur.mouse.hovered_entity and ur.mouse.left:
+        print(f"Hovered over: {ur.mouse.hovered_entity.name} at {ur.mouse.hovered_entity.position}")
+        ur.mouse.hovered_entity.click()
+        ur.time.sleep(0.1)
     
         
         

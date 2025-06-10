@@ -7,7 +7,7 @@ class Pawn(ur.Button):
         self.game = game  # Save reference to the main game
         self.name = 'pawn'
 
-    def on_click(self):
+    def click(self):
         print(f"Pawn clicked at {self.position}")
         if self.game:
             self.game.clear_points()

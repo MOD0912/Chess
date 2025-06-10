@@ -217,7 +217,8 @@ class Main:
             print(len(i))
 
     def summon_point(self, pos, piece):
-        pos  = (pos[0], (pos[1]+1.9)/10, 0)
+        print(pos)
+        pos  = (pos[0], pos[1]+.1, 0)
         print(f"Summon point at {pos}")
         self.point = ur.Button(
             parent=self.board,

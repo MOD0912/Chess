@@ -1,5 +1,7 @@
 import ursina as ur
 import os
+import time
+import threading as th
 
 from Pawn import Pawn
 from Rook import Rook
@@ -25,6 +27,7 @@ class Main:
             color=ur.color.white
         )
         self.points = []
+        self.ended = True
         self.create_board()
         self.create_pieces()
     
@@ -34,7 +37,9 @@ class Main:
             model="quad",
             position=(.35, .35, -0.2),
             scale=(.9, .9),
-            color=ur.color.rgba32(120, 67, 33).tint(-.05)
+            color=ur.color.rgba32(120, 67, 33).tint(-.05),
+            input=self.input,
+            
         )
         # rgba32 very dark brown:  
         for x in range(0, 8):
@@ -226,6 +231,7 @@ class Main:
             scale=.0625,
             color=ur.color.red,
         )
+        point.name = "point"
         point.on_click=lambda x=point: self.move_piece(x)
 
         self.piece = piece
@@ -243,19 +249,16 @@ class Main:
     def on_hover(self):
         print("Hovering over the board")
         
-def input(key):
-    if key == "control":
-        exit()
+    def input(self, key):
+        if key == "control":
+            exit()
+        
+        if ur.mouse.hovered_entity and key == "left mouse down" and ur.mouse.hovered_entity.name != "point":
+            print(f"Hovered over: {ur.mouse.hovered_entity.name} at {ur.mouse.hovered_entity.position}")
+            ur.mouse.hovered_entity.click()
 
-def update():
-    if ur.mouse.hovered_entity and ur.mouse.left:
-        print(f"Hovered over: {ur.mouse.hovered_entity.name} at {ur.mouse.hovered_entity.position}")
-        ur.mouse.hovered_entity.click()
-        ur.time.sleep(0.1)
-    
-        
-        
+
+
 app = ur.Ursina()
 Main()
-ur.EditorCamera()
 app.run()

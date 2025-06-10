@@ -1,4 +1,11 @@
 # Reflexion
+Gemeinsame Reflektion
 Die Zusammenarbeit im Team war sehr positiv. Wir haben uns gegenseitig unterstützt und Ideen ausgetauscht, was zu einer besseren Umsetzung unserer Aufgaben geführt hat. Jeder hat seine Stärken eingebracht, und wir konnten voneinander lernen.
 Die Kommunikation war offen und konstruktiv, was dazu beigetragen hat, Missverständnisse zu vermeiden. Wir haben regelmäßig Feedback gegeben und uns gegenseitig motiviert, was die Teamdynamik gestärkt hat.
 Die Arbeitsteilung war klar definiert, und jeder wusste, was von ihm erwartet wurde. Dadurch konnten wir effizient arbeiten und unsere Ziele erreichen. Es gab auch Raum für kreative Ideen, die das Endergebnis verbessert haben.
+
+Melvin:
+Die Zusammenarbeit war schon hilfreich,es hat oft geholfen wenn Fehler im Code passiert sind.
+
+Berat:
+Es war ein bisschen komisch die ganze Zeit dem anderen zuzuschauen wie er programmiert und ihm nur die Ideen zu geben,statt dass wir beide einfach einzeln auf unseren Laptops programmieren.Trotzdem hat es aber gut geklappt.

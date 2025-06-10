@@ -216,26 +216,33 @@ class Main:
             #print(i)
             print(len(i))
 
-    def summon_point(self, pos):
-        pos  = (pos[0]/10, (pos[1]+1)/10, 0)
+    def summon_point(self, pos, piece):
+        pos  = (pos[0], (pos[1]+1.9)/10, 0)
         print(f"Summon point at {pos}")
-        point = ur.Entity(
+        self.point = ur.Button(
             parent=self.board,
             model="circle",
             position=pos,
             scale=.0625,
-            color=ur.color.red
+            color=ur.color.red,
+            on_click=self.move_piece,
         )
-        self.points.append(point)
+        self.piece = piece
+        self.points.append(self.point)
         
     def clear_points(self):
         for i in self.points:
             ur.destroy(i)
         self.points = []
+    
+    def move_piece(self):
+        self.piece.position = self.point.position
+        self.clear_points()
         
 def input(key):
     if key == "control":
         exit()
+    
         
         
 app = ur.Ursina()

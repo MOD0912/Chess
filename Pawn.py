@@ -11,8 +11,7 @@ class Pawn(ur.Button):
         print(f"Pawn clicked at {self.position}")
         if self.game:
             self.game.clear_points()
-        
-        self.game.summon_point()
+        self.game.summon_point(self.position, self)
 
     def move(self, new_position):
         """Move the pawn to a new position."""
